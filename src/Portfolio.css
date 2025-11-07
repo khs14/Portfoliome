@@ -1,0 +1,388 @@
+/* Portfolio Styles */
+
+/* Import Roboto Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+/* Base container */
+.portfolio-container {
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  background-color: #000000;
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f472b6;
+}
+
+.nav-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.nav-button-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-button-inactive {
+  background-color: #000000;
+  border: 2px solid #facc15;
+}
+
+.nav-button-inactive .nav-button-text {
+  color: #facc15;
+}
+
+.nav-button-inactive:hover {
+  background-color: rgba(250, 204, 21, 0.1);
+  transform: scale(1.05);
+}
+
+.nav-button-active {
+  background-color: #facc15;
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px -3px rgba(250, 204, 21, 0.5);
+}
+
+.nav-button-active .nav-button-text {
+  color: #000000;
+}
+
+.nav-icon-inactive {
+  width: 1rem;
+  height: 1rem;
+  color: #facc15;
+}
+
+.nav-icon-active {
+  width: 1rem;
+  height: 1rem;
+  color: #000000;
+}
+
+/* Arrow Controls */
+.arrow-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.arrow-button {
+  padding: 0.5rem;
+  background-color: #000000;
+  border: 2px solid #facc15;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.arrow-button:hover {
+  background-color: rgba(250, 204, 21, 0.1);
+  transform: scale(1.1);
+}
+
+.arrow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #facc15;
+}
+
+.slide-counter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  min-width: 100px;
+  text-align: center;
+}
+
+.slide-counter-current {
+  color: #f472b6;
+}
+
+.slide-counter-total {
+  color: #facc15;
+}
+
+/* Slide Content */
+.slide-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* Image Slide */
+.image-slide-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+}
+
+.slide-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Contact Slide */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 1rem 1rem 1rem;
+}
+
+.contact-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f472b6;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem; /* adds light top gap */
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 42rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #1f2937;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.contact-link-pink {
+  border: 2px solid #f472b6;
+}
+
+.contact-link-pink:hover {
+  background-color: #111827;
+  border-color: #facc15;
+  transform: scale(1.05);
+}
+
+.contact-link-yellow {
+  border: 2px solid #facc15;
+}
+
+.contact-link-yellow:hover {
+  background-color: #111827;
+  border-color: #f472b6;
+  transform: scale(1.05);
+}
+
+.contact-icon-yellow {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #facc15;
+}
+
+.contact-icon-pink {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #f472b6;
+}
+
+.contact-text-pink {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #f472b6;
+  font-weight: 600;
+}
+
+.contact-text-yellow {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #facc15;
+  font-weight: 600;
+}
+
+/* Placeholder Slide */
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.placeholder-icon {
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 2rem;
+}
+
+.placeholder-icon-pink {
+  color: #f472b6;
+}
+
+.placeholder-icon-yellow {
+  color: #facc15;
+}
+
+.placeholder-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.placeholder-title-pink {
+  color: #f472b6;
+}
+
+.placeholder-title-yellow {
+  color: #facc15;
+}
+
+.placeholder-text-yellow {
+  color: #facc15;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-text-pink {
+  color: #f472b6;
+  font-size: 1.125rem;
+  font-family: monospace;
+  background-color: #1f2937;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Progress Bar */
+.progress-container {
+  background-color: #000000;
+  padding: 0.5rem;
+  border-top: 2px solid #f472b6;
+}
+
+.progress-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.progress-bars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.progress-bar {
+  height: 0.5rem;
+  flex: 1;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.progress-bar-active {
+  background-color: #facc15;
+}
+
+.progress-bar-inactive {
+  background-color: #1f2937;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    justify-items: center;
+  }
+  
+  .nav-button {
+    padding: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-icon-inactive,
+  .nav-icon-active {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .arrow-controls {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-title {
+    font-size: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .placeholder-title {
+    font-size: 4.5rem;
+  }
+}
