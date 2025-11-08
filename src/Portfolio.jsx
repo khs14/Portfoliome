@@ -14,20 +14,23 @@ const Portfolio = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const slideFolder = isMobile ? '/slidesm' : '/slides';
+  
   const slides = [
-    { id: 0, title: 'Introduction', heading: '', icon: Home, color: 'pink', image: '/slides/slide1.png' },
-    { id: 1, title: 'High School', heading: 'Education', icon: GraduationCap, color: 'yellow', image: '/slides/slide2.png' },
-    { id: 2, title: 'Undergraduate', heading: 'Education', icon: GraduationCap, color: 'pink', image: '/slides/slide3.png' },
-    { id: 3, title: 'Work Experience 1', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: '/slides/slide4.png' },
-    { id: 4, title: 'Work Experience 2', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: '/slides/slide5.png' },
-    { id: 5, title: 'Work Experience 3', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: '/slides/slide6.png' },
-    { id: 6, title: 'Work Experience 4', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: '/slides/slide7.png' },
-    { id: 7, title: 'Work Experience 5', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: '/slides/slide8.png' },
-    { id: 8, title: 'Personal Projects', heading: 'Personal Projects', icon: Code, color: 'pink', image: '/slides/slide9.png' },
-    { id: 9, title: 'Personal Hobbies', heading: 'Hobbies', icon: Heart, color: 'yellow', image: '/slides/slide10.png' },
+    { id: 0, title: 'Introduction', heading: '', icon: Home, color: 'pink', image: `${slideFolder}/slide1.png` },
+    { id: 1, title: 'High School', heading: 'Education', icon: GraduationCap, color: 'yellow', image: `${slideFolder}/slide2.png` },
+    { id: 2, title: 'Undergraduate', heading: 'Education', icon: GraduationCap, color: 'pink', image: `${slideFolder}/slide3.png` },
+    { id: 3, title: 'Work Experience 1', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide4.png` },
+    { id: 4, title: 'Work Experience 2', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: `${slideFolder}/slide5.png` },
+    { id: 5, title: 'Work Experience 3', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide6.png` },
+    { id: 6, title: 'Work Experience 4', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: `${slideFolder}/slide7.png` },
+    { id: 7, title: 'Work Experience 5', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide8.png` },
+    { id: 8, title: 'Personal Projects', heading: 'Personal Projects', icon: Code, color: 'pink', image: `${slideFolder}/slide9.png` },
+    { id: 9, title: 'Personal Hobbies', heading: 'Hobbies', icon: Heart, color: 'yellow', image: `${slideFolder}/slide10.png` },
     { id: 10, title: 'Contact Me', heading: 'Contact Me', icon: Mail, color: 'pink', image: null }
-  ];
+  ]
 
+  
   const navItems = slides.reduce((acc, slide) => {
     if (!acc.find(item => item.heading === slide.heading)) {
       acc.push({
