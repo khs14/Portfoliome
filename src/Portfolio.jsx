@@ -116,7 +116,7 @@ const Portfolio = () => {
       <div className="placeholder-container" style={{ display: 'none' }}>
         <slide.icon className={`placeholder-icon placeholder-icon-${slide.color}`} />
         <h1 className={`placeholder-title placeholder-title-${slide.color}`}>{slide.title}</h1>
-        <p className="placeholder-text-yellow">Place your slide image in:</p>
+        <p className="placeholder-text-yellow">slide image in:</p>
         <p className="placeholder-text-pink">public/slides/slide{slide.id + 1}.png</p>
       </div>
     </div>
