@@ -3,6 +3,59 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
 
+::selection {
+  background-color: #d4b896; /* Darker beige background */
+  color: #000000; /* Black text */
+}
+
+/* For Firefox */
+::-moz-selection {
+  background-color: #d4b896; /* Darker beige background */
+  color: #000000; /* Black text */
+}
+
+/* ========== CUSTOM SCROLLBAR ========== */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of vertical scrollbar */
+  height: 12px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #000000; /* Black track to match your background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fbbf24; /* Yellow thumb */
+  border-radius: 6px;
+  border: 2px solid #000000; /* Black border around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f472b6; /* Pink on hover */
+}
+
+/* Scrollbar buttons (arrows at top/bottom) */
+::-webkit-scrollbar-button {
+  background: #fbbf24; /* Yellow buttons */
+  border: 1px solid #000000;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: #f472b6; /* Pink on hover */
+}
+
+/* Scrollbar corner (where horizontal and vertical scrollbars meet) */
+::-webkit-scrollbar-corner {
+  background: #000000;
+}
+
+/* For Firefox (limited styling support) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fbbf24 #000000; /* Yellow thumb, black track */
+}
 /* Base container */
 .portfolio-container {
   min-height: 100vh;
