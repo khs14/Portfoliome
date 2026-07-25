@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Home, GraduationCap, Briefcase, Code, Heart, Mail, Linkedin, Github, Download } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home, GraduationCap, Briefcase, FileText, Code, Heart, Mail, Linkedin, Github, Download } from 'lucide-react';
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -15,28 +15,119 @@ const Portfolio = () => {
   }, []);
 
   const slideFolder = isMobile ? '/slidesm' : '/slides';
-  
-  const slides = [
-    { id: 0, title: 'Introduction', heading: '', icon: Home, color: 'pink', image: `${slideFolder}/slide1.png` },
-    { id: 1, title: 'High School', heading: 'Education', icon: GraduationCap, color: 'yellow', image: `${slideFolder}/slide2.png` },
-    { id: 2, title: 'Undergraduate', heading: 'Education', icon: GraduationCap, color: 'pink', image: `${slideFolder}/slide3.png` },
-    { id: 3, title: 'Work Experience 1', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide4.png` },
-    { id: 4, title: 'Work Experience 2', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: `${slideFolder}/slide5.png` },
-    { id: 5, title: 'Work Experience 3', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide6.png` },
-    { id: 6, title: 'Work Experience 4', heading: 'Work Experience', icon: Briefcase, color: 'pink', image: `${slideFolder}/slide7.png` },
-    { id: 7, title: 'Work Experience 5', heading: 'Work Experience', icon: Briefcase, color: 'yellow', image: `${slideFolder}/slide8.png` },
-    { id: 8, title: 'Personal Projects', heading: 'Personal Projects', icon: Code, color: 'pink', image: `${slideFolder}/slide9.png` },
-    { id: 9, title: 'Personal Hobbies', heading: 'Hobbies', icon: Heart, color: 'yellow', image: `${slideFolder}/slide10.png` },
-    { id: 10, title: 'Contact Me', heading: 'Contact Me', icon: Mail, color: 'pink', image: null }
-  ]
 
-  
+  // ---------------------------------------------------------------------
+  // SECTION CONFIG
+  // The whole deck is grouped into sections (Education, Work Experience,
+  // Research, etc). To add a slide, find its section below and add ONE
+  // line to that section's `items` array — nothing else needs to change.
+  //
+  // Each item only needs: { key, title }
+  //   - key   -> stable id used for the image filename (never renumbered,
+  //              so reordering/adding slides never breaks image names)
+  //   - title -> text shown in the placeholder if no image is found yet
+  //
+  // To add an image for a slide, drop a file named `${key}.png` into both:
+  //   public/slides/<key>.png   (desktop)
+  //   public/slidesm/<key>.png  (mobile)
+  //
+  // `heading` is what shows up as a tab in the nav bar. Give two sections
+  // the same heading and they'll share one nav tab (like Education does).
+  // Colors alternate automatically within each section — no need to set
+  // them by hand.
+  // ---------------------------------------------------------------------
+  const sections = [
+    {
+      heading: '',
+      icon: Home,
+      items: [
+        { key: 'intro', title: 'Introduction' },
+      ],
+    },
+    {
+      heading: 'Education',
+      icon: GraduationCap,
+      items: [
+        { key: 'edu-highschool', title: 'High School' },
+        { key: 'edu-undergrad', title: 'Undergraduate' },
+        { key: 'edu-masters', title: 'Masters (PG)' },
+        // 👉 add more education slides here, e.g.:
+        // { key: 'edu-phd', title: 'PhD' },
+      ],
+    },
+    {
+      heading: 'Work Experience',
+      icon: Briefcase,
+      items: [
+        { key: 'work-1', title: 'Work Experience 1' },
+        { key: 'work-2', title: 'Work Experience 2' },
+        { key: 'work-3', title: 'Work Experience 3' },
+        { key: 'work-4', title: 'Work Experience 4' },
+        { key: 'work-5', title: 'Work Experience 5' },
+        // 👉 add more jobs here, e.g.:
+        // { key: 'work-6', title: 'Work Experience 6' },
+      ],
+    },
+    {
+      heading: 'Research',
+      icon: FileText,
+      items: [
+        { key: 'research-1', title: 'Research Paper 1' },
+        // 👉 add more papers here, e.g.:
+        // { key: 'research-2', title: 'Research Paper 2' },
+      ],
+    },
+    {
+      heading: 'Personal Projects',
+      icon: Code,
+      items: [
+        { key: 'projects-1', title: 'Project 1' },
+        // 👉 add more project slides here, e.g.:
+        // { key: 'projects-2', title: 'Project 2' },
+      ],
+    },
+    {
+      heading: 'Hobbies',
+      icon: Heart,
+      items: [
+        { key: 'hobbies', title: 'Personal Hobbies' },
+      ],
+    },
+    {
+      heading: 'Contact Me',
+      icon: Mail,
+      items: [
+        { key: 'contact', title: 'Contact Me' },
+      ],
+    },
+  ];
+
+  // Flatten sections into the flat slide list the rest of the component uses.
+  const colorsByPosition = ['pink', 'yellow'];
+  let runningIndex = 0;
+  const slides = sections.flatMap((section) =>
+    section.items.map((item) => {
+      const slide = {
+        ...item,
+        id: runningIndex,
+        heading: section.heading,
+        icon: section.icon,
+        color: colorsByPosition[runningIndex % 2],
+        image: item.key === 'contact' ? null : `${slideFolder}/${item.key}.png`,
+      };
+      runningIndex += 1;
+      return slide;
+    })
+  );
+
+  const contactSlideId = slides.find((s) => s.key === 'contact').id;
+
   const navItems = slides.reduce((acc, slide) => {
-    if (!acc.find(item => item.heading === slide.heading)) {
+    if (!acc.find((item) => item.heading === slide.heading)) {
       acc.push({
         heading: slide.heading,
         icon: slide.icon,
-        slideId: slide.id
+        slideId: slide.id,
       });
     }
     return acc;
@@ -71,23 +162,21 @@ const Portfolio = () => {
           <Linkedin className="contact-icon-yellow" />
           <span className="contact-text-pink">LinkedIn</span>
         </a>
-        
+
         <a href="mailto:kaustubhsethi14@gmail.com" className="contact-link contact-link-yellow">
           <Mail className="contact-icon-pink" />
           <span className="contact-text-yellow">Email</span>
         </a>
-        
+
         <a href="https://github.com/khs14" target="_blank" rel="noopener noreferrer" className="contact-link contact-link-pink">
           <Github className="contact-icon-yellow" />
           <span className="contact-text-pink">GitHub</span>
         </a>
-        
+
         <a href="https://x.com/CodesKhs" target="_blank" rel="noopener noreferrer" className="contact-link contact-link-yellow">
           <span className="contact-icon-pink" style={{ fontSize: '2rem', fontWeight: 'bold' }}>𝕏</span>
           <span className="contact-text-yellow">X (Twitter)</span>
         </a>
-
-        
 
         <a href="/resume.pdf" download className="contact-link contact-link-pink">
           <Download className="contact-icon-yellow" />
@@ -117,7 +206,7 @@ const Portfolio = () => {
         <slide.icon className={`placeholder-icon placeholder-icon-${slide.color}`} />
         <h1 className={`placeholder-title placeholder-title-${slide.color}`}>{slide.title}</h1>
         <p className="placeholder-text-yellow">slide image in:</p>
-        <p className="placeholder-text-pink">public/slides/slide{slide.id + 1}.png</p>
+        <p className="placeholder-text-pink">public/slides/{slide.key}.png (and public/slidesm/{slide.key}.png)</p>
       </div>
     </div>
   );
@@ -160,7 +249,7 @@ const Portfolio = () => {
 
       <div className="slide-content">
         <div className="slide-inner">
-          {currentSlide === 10 ? (
+          {currentSlide === contactSlideId ? (
             <ContactSlide />
           ) : (
             <ImageSlide slide={slides[currentSlide]} />
