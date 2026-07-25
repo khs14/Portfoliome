@@ -16,26 +16,7 @@ const Portfolio = () => {
 
   const slideFolder = isMobile ? '/slidesm' : '/slides';
 
-  // ---------------------------------------------------------------------
-  // SECTION CONFIG
-  // The whole deck is grouped into sections (Education, Work Experience,
-  // Research, etc). To add a slide, find its section below and add ONE
-  // line to that section's `items` array — nothing else needs to change.
-  //
-  // Each item only needs: { key, title }
-  //   - key   -> stable id used for the image filename (never renumbered,
-  //              so reordering/adding slides never breaks image names)
-  //   - title -> text shown in the placeholder if no image is found yet
-  //
-  // To add an image for a slide, drop a file named `${key}.png` into both:
-  //   public/slides/<key>.png   (desktop)
-  //   public/slidesm/<key>.png  (mobile)
-  //
-  // `heading` is what shows up as a tab in the nav bar. Give two sections
-  // the same heading and they'll share one nav tab (like Education does).
-  // Colors alternate automatically within each section — no need to set
-  // them by hand.
-  // ---------------------------------------------------------------------
+
   const sections = [
     {
       heading: '',
@@ -51,7 +32,7 @@ const Portfolio = () => {
         { key: 'edu-highschool', title: 'High School' },
         { key: 'edu-undergrad', title: 'Undergraduate' },
         { key: 'edu-masters', title: 'Masters (PG)' },
-        // 👉 add more education slides here, e.g.:
+        //  add more education slides here, e.g.:
         // { key: 'edu-phd', title: 'PhD' },
       ],
     },
@@ -64,7 +45,7 @@ const Portfolio = () => {
         { key: 'work-3', title: 'Work Experience 3' },
         { key: 'work-4', title: 'Work Experience 4' },
         { key: 'work-5', title: 'Work Experience 5' },
-        // 👉 add more jobs here, e.g.:
+        //  add more jobs here, e.g.:
         // { key: 'work-6', title: 'Work Experience 6' },
       ],
     },
@@ -73,7 +54,7 @@ const Portfolio = () => {
       icon: FileText,
       items: [
         { key: 'research-1', title: 'Research Paper 1' },
-        // 👉 add more papers here, e.g.:
+        //  add more papers here, e.g.:
         // { key: 'research-2', title: 'Research Paper 2' },
       ],
     },
@@ -82,7 +63,7 @@ const Portfolio = () => {
       icon: Code,
       items: [
         { key: 'projects-1', title: 'Project 1' },
-        // 👉 add more project slides here, e.g.:
+        // add more project slides here, e.g.:
         // { key: 'projects-2', title: 'Project 2' },
       ],
     },
